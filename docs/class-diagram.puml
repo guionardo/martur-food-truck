@@ -1,0 +1,56 @@
+@startuml Class diagram
+
+class User {
+    + int id
+    + string name
+    + string email
+    + string level
+    + bool enabled
+}
+
+class Checkout {
+    + int id
+    + string name    
+}
+
+class UserCheckout {
+    + int id_user
+    + int id_checkout
+}
+
+class UserKey {
+    + int id
+    + string key
+    + int id_user
+    + datetime valid_until
+}
+
+class Customer {
+    + int id
+    + string name
+    + string phone
+    + string address
+    + int credit_limit
+}
+
+
+class Sale {
+    + int id
+    + datetime timestamp
+    + int id_client
+    + int id_checkou
+    + float value
+    + string description
+    + datetime payment_date
+    + int id_user_payment
+}
+
+class Payment {
+    + int id
+    + int id_sale
+    + datetime payment_date
+    + float value
+    + int id_user
+}
+
+@enduml

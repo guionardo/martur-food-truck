@@ -1,0 +1,58 @@
+@startuml
+
+' left to right direction
+
+actor Usuário as user
+note left of user: Nome\nEmail\nSenha\nTipo
+
+actor Administrador as admin
+actor "Operador de Caixa" as operator
+
+actor Cliente as customer
+note left of customer: Nome\ncontato\nlimite de crédito
+
+(Login) as (login)
+note right of login: Credenciais\n(nome do usuário\ne senha)
+
+user <|-- admin
+user <|-- operator
+
+
+
+(Criar\nusuário) as (create_user)
+(create_user) .. (login)
+(Habilitar\nusuário) as (enable_user)
+(enable_user) .. (login)
+(Desabilitar\nusuário) as (disable_user)
+(disable_user) .. (login)
+admin -> (disable_user)
+admin -> (enable_user)
+admin -> (create_user)
+
+(Cadastra\ncliente) as (create_customer)
+(create_customer) .. (login)
+' note right of (create_customer): Nome do cliente\ncontato\nlimite de crédito
+
+(Registra fiado\ndo cliente\nno caixa) as (sale_on_credit)
+(Validar se o\nlimite de\ncrédito\nserá ultrapassado) as (validate_credit)
+(sale_on_credit) .. (validate_credit)
+(validate_credit) .. (login)
+
+
+(Registra pagamento\ndo cliente) as (add_payment)
+(Atualizar o\nlimite de crédito) as (update_credit)
+(add_payment) .. (update_credit)
+(update_credit) .. (login)
+
+
+(Lista pendências\ndo cliente) as (list_pendency)
+(list_pendency) .. (login)
+(Lista histórico\ndo cliente) as (list_history)
+(list_history)..(login)
+operator -> (create_customer)
+operator -> (sale_on_credit)
+operator -> (add_payment)
+operator -> (list_pendency)
+operator -> (list_history)
+
+@enduml
