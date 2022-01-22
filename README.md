@@ -21,7 +21,7 @@ Construir um aplicativo web que possa ser utilizado no celular para que o lojist
 
 ## Requisitos não funcionais
 
-1. Web APP SPA para possibilitar o uso via navegador e instalação fácil no dispositivo móvel.
+1. Web APP PWA para possibilitar o uso via navegador e instalação fácil no dispositivo móvel.
 2. Desenvolvimento orientado a offline-first, com atualizações de dados assíncronas com o backend.
 3. Identificadores de entidades não numéricos, para não correr o risco de problemas com criação de entidades offline.
 
@@ -32,3 +32,7 @@ Construir um aplicativo web que possa ser utilizado no celular para que o lojist
 ## Classes
 
 ![Classes](docs/class-diagram.png)
+
+## Arquitetura
+
+![Arquitetura](docs/deployment-diagram.png)
