@@ -16,7 +16,7 @@ note right of login: Credenciais\n(nome do usuário\ne senha)
 
 user <|-- admin
 user <|-- operator
-
+user <|-- customer
 
 
 (Criar\nusuário) as (create_user)
@@ -55,4 +55,17 @@ operator -> (add_payment)
 operator -> (list_pendency)
 operator -> (list_history)
 
+(Consulta próprio histórico) as (query_history)
+(query_history) .. (login)
+note top of (query_history): "Histórico de compras e pagamentos"
+(Consulta próprias pendências) as (query_pendency)
+note top of (query_pendency): "Lista de compras não pagas"
+(query_pendency) .. (login)
+(Consulta próprio status) as (query_status)
+(query_status) .. (login)
+note top of (query_status): "Status de bom/mau cliente"
+
+customer -> (query_history)
+customer -> (query_pendency)
+customer -> (query_status)
 @enduml
